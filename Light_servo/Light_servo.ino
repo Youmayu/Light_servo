@@ -1,15 +1,24 @@
-#include <Servo.h>
-const int servoPin = 9;
-const int t = 100;
+int light1=0;
+int light2=0;
+int light3=0;
+int light4=0;
 
-Servo servo;
+
+
+void lightcheck(){
+    light1 = analogRead(A0);
+    light2 = analogRead(A1);
+    light3 = analogRead(A2);
+    light4 = analogRead(A3);
+}
+
 
 void setup(){
-    servo.attach(servoPin);
+    Serial.begin(9600);
+    pinMode(A0, INPUT);
 }
+
 void loop(){
-    servo.write(0);
-    delay(t);
-    servo.write(180);
-    delay(t);
-}
+    int light = analogRead(A0);
+    Serial.println(light);
+    delay(1000);}
