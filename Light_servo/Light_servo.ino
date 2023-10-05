@@ -23,29 +23,23 @@ void setup(){
     pinMode(A3,INPUT_PULLUP);
 }
 void loop(){
-    Serial.println(1023-analogRead(A0));
-    lysverdi_1 = (1023-analogRead(A0));
-    lysverdi_2 = (1023-analogRead(A1));
-    lysverdi_3 = (1023-analogRead(A2));
-    lysverdi_4 = (1023-analogRead(A3));
-    if (lysverdi_1>lysverdi_2 && lysverdi_1>lysverdi_3 && lysverdi_1>lysverdi_4){
-        //Serial.println(1);
-        if (value1>=0){
-            value1+=1;
-        }
-        if (value2<=180){
-            value2-=1;
+    Serial.println(analogRead(A0));
+    lysverdi_1 = (analogRead(A0));
+    lysverdi_2 = (analogRead(A1));
+    lysverdi_3 = (analogRead(A2));
+    lysverdi_4 = (analogRead(A3));
+    if ((lysverdi_1+lysverdi_3)>(lysverdi_2+lysverdi_4)){
+        if (value2<180){
+            value2++;
         }
     }
-    else if (lysverdi_2>lysverdi_1 && lysverdi_2>lysverdi_3 && lysverdi_2>lysverdi_4){
-        //Serial.println(2);
-        if (value1<=180){
-            value1-=1;
-        }
-        if (value2>=0){
-            value2+=1;
+    else {
+        if (value2>0){
+            value2--;
         }
     }
     servo.write(value1);
     servo2.write(value2);
+    Serial.println(lysverdi_1+lysverdi_3);
+    Serial.println(lysverdi_2+lysverdi_4);
 }
