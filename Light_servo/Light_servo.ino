@@ -38,6 +38,16 @@ void loop(){
             value2--;
         }
     }
+    if ((lysverdi_1+lysverdi_2)>(lysverdi_3+lysverdi_4)){
+        if (value1<180){
+            value1++;
+        }
+    }
+    else {
+        if (value1>0){
+            value1--;
+        }
+    }
     servo.write(value1);
     servo2.write(value2);
     Serial.println(lysverdi_1+lysverdi_3);
